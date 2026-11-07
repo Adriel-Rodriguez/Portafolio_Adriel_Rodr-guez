@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fernando Adriel Rodríguez Bautista · Portafolio de herramientas SHE</title>
+<meta name="description" content="Herramientas web para Seguridad, Salud y Medio Ambiente (SHE) desarrolladas por Fernando Adriel Rodríguez Bautista: inventario de EPP con firma electrónica, desviaciones en recorrido, actividades del turno y horas vuelo de montacarguistas.">
+<style>
+  :root{--az:#2D3277;--az2:#3483FA;--bg:#F4F5F8;--tx:#1b1d2a;--mu:#5c6075;--ln:#e3e5ec;--ok:#00A650;--wa:#FF7733}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Nunito Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--tx);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--az2)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  header{background:var(--az);color:#fff;padding:56px 0 48px}
+  header .wrap{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
+  .kick{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;opacity:.75;margin-bottom:10px}
+  h1{font-size:40px;line-height:1.1;margin:0 0 10px;font-weight:900;letter-spacing:-.01em}
+  .sub{font-size:19px;opacity:.9;max-width:640px;margin:0 0 22px}
+  .contact{display:flex;flex-wrap:wrap;gap:10px}
+  .contact a,.contact span{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;text-decoration:none;border-radius:999px;padding:7px 14px;font-size:14px;font-weight:700}
+  .contact svg{width:16px;height:16px}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;min-width:260px}
+  .stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:14px 16px}
+  .stat b{display:block;font-size:30px;font-weight:900;line-height:1}
+  .stat span{font-size:12.5px;opacity:.85;font-weight:700}
+  main{padding:40px 0 60px}
+  h2{font-size:26px;font-weight:900;color:var(--az);margin:0 0 6px;letter-spacing:-.01em}
+  .lead{color:var(--mu);margin:0 0 22px;max-width:760px}
+  .intro{background:#fff;border:1px solid var(--ln);border-radius:14px;padding:22px 26px;margin-bottom:34px;display:grid;grid-template-columns:1.4fr 1fr;gap:26px}
+  .intro h3{margin:0 0 8px;font-size:17px;color:var(--az)}
+  .intro p{margin:0 0 10px}
+  .intro ul{margin:0;padding-left:20px}
+  .intro li{margin:4px 0}
+  .tool{background:#fff;border:1px solid var(--ln);border-radius:16px;overflow:hidden;margin-bottom:28px;display:grid;grid-template-columns:1.05fr 1fr}
+  .tool .shot{position:relative;background:#EEF2F8;min-height:320px}
+  .tool .shot img{width:100%;height:auto;display:block;border-bottom:1px solid var(--ln)}
+  .tool .shot .mob{position:absolute;right:16px;bottom:-1px;width:120px;border-radius:14px 14px 0 0;box-shadow:0 8px 24px rgba(0,0,0,.25);border:3px solid #fff;border-bottom:0;background:#fff;overflow:hidden}
+  .tool .shot .mob img{height:auto}
+  .tool .body{padding:26px 28px}
+  .tag{display:inline-block;font-size:11.5px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--az2);background:#E8F0FE;border-radius:6px;padding:3px 9px;margin-bottom:10px}
+  .tool h3{font-size:23px;margin:0 0 6px;color:var(--az);font-weight:900}
+  .tool .for{color:var(--mu);font-size:14.5px;margin:0 0 12px}
+  .tool p{margin:0 0 12px}
+  .tool ul{margin:0 0 16px;padding-left:20px;font-size:15px}
+  .tool li{margin:4px 0}
+  .tool li b{color:var(--az)}
+  .acts{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--az2);color:#fff;text-decoration:none;font-weight:800;border-radius:8px;padding:11px 18px;font-size:15px}
+  .btn:hover{background:#2968C8}
+  .btn.sec{background:#fff;color:var(--az2);border:1px solid rgba(52,131,250,.5)}
+  .btn svg{width:17px;height:17px}
+  .hint{font-size:13px;color:var(--mu)}
+  .stack{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+  .card{background:#fff;border:1px solid var(--ln);border-radius:14px;padding:18px 20px}
+  .card h4{margin:0 0 6px;font-size:15.5px;color:var(--az)}
+  .card p{margin:0;font-size:14.5px;color:var(--mu)}
+  .note{background:#FFF6CC;border:1px solid #E6CF00;border-radius:10px;padding:12px 16px;font-size:14px;color:#5a4b00;margin:28px 0 0}
+  footer{border-top:1px solid var(--ln);padding:22px 0 40px;font-size:13.5px;color:var(--mu)}
+  @media(max-width:860px){
+    header .wrap{grid-template-columns:1fr}
+    .stats{grid-template-columns:repeat(4,1fr)}
+    .intro,.tool{grid-template-columns:1fr}
+    .tool .shot{min-height:220px}
+    .tool .shot .mob{width:96px}
+    .stack{grid-template-columns:1fr}
+    h1{font-size:32px}
+  }
+  @media(max-width:520px){.stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div>
+      <div class="kick">Portafolio · Seguridad, Salud y Medio Ambiente (SHE)</div>
+      <h1>Fernando Adriel Rodríguez Bautista</h1>
+      <p class="sub">Analista de Prevención de Riesgos (SHE). Diseño y construyo herramientas web que convierten el trabajo de seguridad en piso (inventarios, recorridos, actividades, certificaciones) en registros confiables, con trazabilidad y listos para auditoría.</p>
+      <div class="contact" id="contacto">
+        <a href="mailto:adriel_rodriguez_17@hotmail.com" id="c-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>adriel_rodriguez_17@hotmail.com</a>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Ciudad de México</span>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>4</b><span>herramientas en uso diario</span></div>
+      <div class="stat"><b>0</b><span>frameworks: HTML, CSS y JS puros</span></div>
+      <div class="stat"><b>5</b><span>roles con permisos distintos</span></div>
+      <div class="stat"><b>PDF</b><span>expedientes de auditoría generados solos</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="intro">
+    <div>
+      <h3>El problema que resuelven</h3>
+      <p>En un centro de distribución el equipo de SHE registra todo el día: qué EPP se entregó y a quién, qué desviaciones se vieron en el recorrido, qué actividades tocan en el turno, cuántas horas de práctica lleva cada montacarguista. Cuando eso vive en hojas de cálculo y formularios sueltos, nadie sabe el dato al momento, no hay firma ni evidencia y preparar una auditoría toma horas.</p>
+      <p>Cada herramienta es una sola página web que se abre desde cualquier navegador, también en los equipos de mano del piso. Guarda los datos cifrados, reconoce a la persona por su sesión, aplica permisos por rol y genera por sí misma el expediente en PDF con el formato que piden las auditorías.</p>
+    </div>
+    <div>
+      <h3>Cómo probar las demos</h3>
+      <ul>
+        <li>Abren sin instalar nada y <b>sin conexión a ningún sistema</b>: todos los datos son ficticios y viven en tu navegador.</li>
+        <li>Abajo de cada demo hay una barra para <b>cambiar de rol</b> (administrador, auditor, analista, consulta) y ver cómo cambia la herramienta.</li>
+        <li>Puedes capturar, firmar, anular y descargar PDF o Excel. <b>Reiniciar datos</b> regresa al ejemplo original.</li>
+      </ul>
+    </div>
+  </section>
+
+  <h2>Herramientas</h2>
+  <p class="lead">Las cuatro están en operación en un centro de distribución. Aquí se muestran versiones de demostración con nombres, correos y sitios inventados.</p>
+
+  <article class="tool" id="epp">
+    <div class="shot"><img src="img/epp_an.png" alt="Análisis EPP: tablero de indicadores de calzado de seguridad"><div class="mob"><img src="img/epp_movil.png" alt="Vista en teléfono"></div></div>
+    <div class="body">
+      <span class="tag">Inventario · Firma electrónica · Auditoría</span>
+      <h3>Inventario de EPP</h3>
+      <p class="for">Para SHE y Servicio médico · calzado y guantes de seguridad en varios sitios</p>
+      <p>Control de existencias por sitio, ubicación y talla, con cada entrada y salida registrada como movimiento. La entrega al colaborador se firma electrónicamente en pantalla: queda su nombre, badge, fecha, folio consecutivo y un código de verificación SHA-256 que delata cualquier alteración.</p>
+      <ul>
+        <li><b>Indicadores</b> por día, semana, mes, trimestre, semestre o año: exactitud, qué se va a acabar, merma, días de cobertura, lo que no se mueve.</li>
+        <li><b>Renovación de calzado:</b> calcula cuándo le toca el siguiente par a cada persona.</li>
+        <li><b>Expedientes PDF</b> con formato controlado (portada, requisitos con clasificación, registro, anexo de firmas y de fotos).</li>
+        <li><b>Flujo de validación</b> para entregas de Servicio médico, bitácora, respaldos cifrados y rol de auditor por sitio.</li>
+      </ul>
+      <div class="acts"><a class="btn" href="demos/inventario_EPP_demo.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9z"/></svg>Abrir demo</a><span class="hint">Prueba: Registrar movimiento › Entrega a colaborador › firma en pantalla.</span></div>
+    </div>
+  </article>
+
+  <article class="tool" id="dsv">
+    <div class="shot"><img src="img/dsv_res.png" alt="Resumen de desviaciones en recorrido"><div class="mob"><img src="img/dsv_movil.png" alt="Vista en teléfono"></div></div>
+    <div class="body">
+      <span class="tag">Recorridos · Reincidencias · MDP</span>
+      <h3>Desviaciones en recorrido</h3>
+      <p class="for">Para analistas SHE · observaciones de seguridad en piso</p>
+      <p>Registro en el momento de lo que se detecta en el recorrido: quién, dónde, qué hacía, si se le dio retroalimentación y si amerita medida disciplinaria. El tipo de desviación se sugiere solo a partir de la descripción y la foto del gafete queda como evidencia.</p>
+      <ul>
+        <li><b>Reincidentes</b> por LDAP y ranking de Team Leaders con tendencia de 30 días.</li>
+        <li><b>Mapa de calor</b> de día y hora para planear los recorridos.</li>
+        <li><b>Seguimiento de MDP</b> pendientes, folios por desviación, Excel y expediente PDF de auditoría.</li>
+        <li><b>Borrador automático</b> y registro sin señal: lo capturado no se pierde.</li>
+      </ul>
+      <div class="acts"><a class="btn" href="demos/desviaciones_SHE_demo.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9z"/></svg>Abrir demo</a><span class="hint">Prueba: escribe un nombre que ya existe y verás el aviso de reincidencia.</span></div>
+    </div>
+  </article>
+
+  <article class="tool" id="act">
+    <div class="shot"><img src="img/act_tablero.png" alt="Tablero y Gantt de actividades del turno"><div class="mob"><img src="img/act_movil.png" alt="Vista en teléfono"></div></div>
+    <div class="body">
+      <span class="tag">Turnos · Gantt · Evidencia</span>
+      <h3>Actividades del turno</h3>
+      <p class="for">Para supervisor y analistas SHE · asignación y cierre de actividades por turno</p>
+      <p>El supervisor asigna actividades con zona, prioridad y hora límite; el analista las ve en su teléfono, carga la foto de evidencia o explica por qué no se pudo. El tablero muestra en vivo el avance del turno y el cierre de cada jornada.</p>
+      <ul>
+        <li><b>Actividades recurrentes</b> que se generan solas (cada turno, días fijos o mensual).</li>
+        <li><b>Validación</b> de evidencias por el supervisor y reasignación entre analistas.</li>
+        <li><b>Modo pantalla (TV)</b> para la oficina de SHE y cierres de turno con cumplimiento.</li>
+        <li><b>Gantt</b> por turno con avisos antes del vencimiento.</li>
+      </ul>
+      <div class="acts"><a class="btn" href="demos/actividades_SHE_demo.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9z"/></svg>Abrir demo</a><span class="hint">Prueba: cambia a «Analista» en la barra de abajo y carga una foto.</span></div>
+    </div>
+  </article>
+
+  <article class="tool" id="hv">
+    <div class="shot"><img src="img/hv_res.png" alt="Resumen de horas vuelo de montacarguistas"><div class="mob"><img src="img/hv_movil.png" alt="Vista en teléfono"></div></div>
+    <div class="body">
+      <span class="tag">Certificación · Hallazgos · Alertas</span>
+      <h3>Horas vuelo · Montacarguistas</h3>
+      <p class="for">Para Team Leaders, supervisores de operación y SHE · práctica de equipo móvil</p>
+      <p>Lleva las horas de práctica de cada operador por equipo (reach, order picker, transpaleta), con la meta que exige el estándar para certificarse, y los hallazgos de SHE con su severidad, cláusula del estándar y acción del Team Leader.</p>
+      <ul>
+        <li><b>Alertas</b>: quién no puede operar (médico, licencia o certificación vencidos), quién está por cumplir la meta, backups listos para evaluación.</li>
+        <li><b>Flujo por puesto</b>: el TL carga, el supervisor valida, SHE audita y cierra.</li>
+        <li><b>Severidad automática</b> por reincidencia y escalamiento según el estándar.</li>
+        <li><b>Ingreso con sesión o PIN</b>, bitácora y respaldos.</li>
+      </ul>
+      <div class="acts"><a class="btn" href="demos/horas_vuelo_demo.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9z"/></svg>Abrir demo</a><span class="hint">Prueba: entra como Team Leader (cualquier nombre) y carga horas.</span></div>
+    </div>
+  </article>
+
+  <h2>Cómo están hechas</h2>
+  <p class="lead">Decisiones técnicas que se repiten en las cuatro herramientas.</p>
+  <div class="stack">
+    <div class="card"><h4>Una sola página, sin dependencias</h4><p>HTML, CSS y JavaScript sin frameworks. Pesan menos de 1 MB y corren en laptop, tablet y equipos de mano del piso desde el navegador.</p></div>
+    <div class="card"><h4>Datos cifrados y con control de choques</h4><p>AES-GCM de 256 bits con clave derivada por PBKDF2, compresión gzip y reintentos cuando dos personas guardan a la vez. Si alguien altera los datos por fuera, se detecta.</p></div>
+    <div class="card"><h4>Permisos por rol y por sitio</h4><p>La identidad viene de la sesión corporativa (SSO); nadie escribe su nombre. Administrador, auditor, SHE, Servicio médico y consulta ven y hacen cosas distintas.</p></div>
+    <div class="card"><h4>Firma electrónica simple</h4><p>Aceptación en pantalla con nombre, badge, fecha y hora, folio consecutivo y código de verificación SHA-256, conforme al Código de Comercio.</p></div>
+    <div class="card"><h4>PDF generado en el navegador</h4><p>Expedientes con formato controlado (código, revisión, hoja N de M), tablas de requisitos con clasificación y anexos de fotos, sin servidor.</p></div>
+    <div class="card"><h4>Pensadas para operar sin señal</h4><p>Borrador automático, cola de envío cuando se cae la red, respaldos diarios y bitácora de quién hizo qué.</p></div>
+  </div>
+
+  <div class="note">Las demos son versiones de demostración con datos y personas inventados. No contienen información de ninguna empresa real ni se conectan a sistemas externos.</div>
+</main>
+<footer><div class="wrap">Desarrollado por Fernando Adriel Rodríguez Bautista · 2025–2026 · Portafolio personal</div></footer>
+</body>
+</html>
